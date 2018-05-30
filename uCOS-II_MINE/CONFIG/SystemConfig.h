@@ -14,7 +14,8 @@
 
 #define MainTask_Prio 5
 #define App1Task_Prio 7
-#define App2Task_Prio 9
+#define App2Task_Prio 8
+#define App3Task_Prio 9
 
 /*
 *********************************************************************************************************
@@ -22,9 +23,8 @@
 *********************************************************************************************************
 */
 
-#define MainTask_StkSize 1024
-#define App1Task_StkSize 1024
-#define App2Task_StkSize 1024
+#define MainTask_StkSize 512
+#define AppTask_StkSize 1024
 #define OS_TASK_TMR_PRIO 65533
 #define OS_IDLE_PRIO OS_TASK_IDLE_PRIO
 #define OS_STAT_PRIO OS_TASK_STAT_PRIO
@@ -33,5 +33,6 @@
 extern void MainTask(void *p_arg);
 extern void App1Task(void *p_arg);
 extern void App2Task(void *p_arg);
+extern void App3Task(void *p_arg);
 
 #endif
