@@ -26,7 +26,7 @@ void MainTask(void *p_arg)
 	{
 		OSTimeDlyHMSM(0, 0, 1, 0);
 	}
-	return 0;
+	return;
 }
 
 
@@ -35,7 +35,7 @@ void App1Task(void * p_arg)
 	p_arg = p_arg;
 	while(1)
 	{
-		printf("1 ");
+		printf("1\n");
 		OSTimeDlyHMSM(0, 0, 3, 0);
 	}
 	
@@ -46,19 +46,57 @@ void App2Task(void * p_arg)
 	p_arg = p_arg;
 	while(1)
 	{
-		printf("2 ");
+		printf("2\n");
 		OSTimeDlyHMSM(0, 0, 6, 0);
 	}
 }
-
+void Show_OSTCB(OS_TCB * pdata)
+{
+	printf("OSTCB: %lu\n",(unsigned long)pdata);
+	printf("OSTCBPrev: %lu\n", (unsigned long)pdata->OSTCBPrev);
+	printf("OSTCBNext: %lu\n", (unsigned long)pdata->OSTCBNext);
+	printf("OSTCBDly: %ul\n", pdata->OSTCBDly);
+	printf("OSTCBStat: %u\n", pdata->OSTCBStat);
+	printf("OSTCBStatPend: %u\n", pdata->OSTCBStatPend);
+	printf("OSTCBPrio: %u\n", pdata->OSTCBPrio);
+	printf("OSTCBX: %u\n", pdata->OSTCBX);
+	printf("OSTCBY: %u\n", pdata->OSTCBY);
+	printf("OSTCBBitX: %u\n", pdata->OSTCBBitX);
+	printf("OSTCBBitY: %u\n", pdata->OSTCBBitY);
+}
 void App3Task(void * p_arg)
 {
-
+	OS_TCB MainPdata;
+	OS_TCB App1Pdate;
+	OS_TCB App2Pdata;
 	p_arg = p_arg;
 	while(1)
 	{
-		printf("3 ");
+		printf("3\n");
+		if(OSTaskQuery(MainTask_Prio, &MainPdata) == OS_ERR_NONE)
+		{
+			printf("Main pdata\n");
+			Show_OSTCB(&MainPdata);
+		}
+		if(OSTaskQuery(App1Task_Prio, &App1Pdate) == OS_ERR_NONE)
+		{
+			printf("App1 pdata\n");
+			Show_OSTCB(&App1Pdate);
+		}
+		if(OSTaskQuery(App2Task_Prio, &App2Pdata) == OS_ERR_NONE)
+		{
+			printf("App2 pdata\n");
+			Show_OSTCB(&App2Pdata);
+		}
+		printf("App3 pdata\n");
+		Show_OSTCB(OSTCBCur);
 		OSTimeDlyHMSM(0, 0, 9, 0);
 	}
 }
+
+
+
+
+
+
 
