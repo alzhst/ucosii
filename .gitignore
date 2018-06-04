@@ -1,7 +1,5 @@
 #windows
 Debug
 151224test/Debug
-ipch
 .vs
-*.swp
-151224test.*
+

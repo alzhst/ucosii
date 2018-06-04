@@ -1,4 +1,4 @@
-/*
+﻿/*
 *********************************************************************************************************
 *                                               uC/OS-II
 *                                        The Real-Time Kernel
@@ -317,6 +317,7 @@ void OSTaskDelHook (OS_TCB *ptcb)
 
 void OSTaskSwHook (void)
 {
+	printf("OSTCBCur:%lu\n",(INT32U)OSTCBHighRdy);
 }
 
 /*
@@ -407,7 +408,7 @@ void OSStartHighRdy()
 
     OS_ENTER_CRITICAL();
 
-    OSTaskSwHook();
+    //OSTaskSwHook();
     ++OSRunning;
 
     OSCtxSwW32Event  = CreateEvent(NULL,FALSE,FALSE,NULL);
