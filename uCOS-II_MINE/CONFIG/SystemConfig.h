@@ -14,6 +14,8 @@
 
 #define MainTask_Prio 5
 #define App1Task_Prio 7
+#define App2Task_Prio 8
+#define App3Task_Prio 9
 
 /*
 *********************************************************************************************************
@@ -30,6 +32,8 @@
 
 extern void MainTask(void *p_arg);
 extern void App1Task(void *p_arg);
+extern void App2Task(void *p_arg);
+extern void App3Task(void *p_arg);
 
 
 #endif

@@ -317,9 +317,6 @@ void OSTaskDelHook (OS_TCB *ptcb)
 
 void OSTaskSwHook (void)
 {
-	static INT32U SwTimes = 0;
-	SwTimes++;
-	printf("OSTaskSwTimes:%lu\n",SwTimes);
 	
 }
 
